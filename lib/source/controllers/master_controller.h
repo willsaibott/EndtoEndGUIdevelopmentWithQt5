@@ -1,8 +1,12 @@
 #pragma once
 
 #include <QObject>
+#include <lib_global.h>
 
-class MasterController : public QObject
+namespace cm {
+namespace controllers {
+
+class CMLIBSHARED_EXPORT MasterController : public QObject
 {
   Q_OBJECT
 public:
@@ -12,4 +16,7 @@ signals:
 
 public slots:
 };
+
+}
+}
 

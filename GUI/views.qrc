@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/views">
+        <file alias="master_view.qml">views/master_view.qml</file>
+    </qresource>
+</RCC>

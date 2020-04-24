@@ -9,6 +9,9 @@ QT       -= gui
 TARGET = lib
 TEMPLATE = lib
 
+CONFIG += c++14
+
+
 DEFINES += LIB_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
@@ -23,11 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        client.cpp
+        source/controllers/master_controller.cpp \
+        source/models/client.cpp
 
 HEADERS += \
-        client.h \
-        lib_global.h 
+        source/controllers/master_controller.h \
+        source/models/client.h \
+        source/lib_global.h
+
+INCLUDEPATH += source
 
 unix {
     target.path = /usr/lib

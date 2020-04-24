@@ -1,9 +1,12 @@
 QT += testlib
 QT -= gui
 
-CONFIG += qt console warn_on depend_includepath testcase
+CONFIG += qt console warn_on depend_includepath testcase c++14
 CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES +=  tst_clienttests.cpp
+SOURCES +=  \
+  source/models/client_tests.cpp
+
+INCLUDEPATH += source
