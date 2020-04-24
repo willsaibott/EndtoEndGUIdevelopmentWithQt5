@@ -5,9 +5,9 @@
 #-------------------------------------------------
 
 QT       -= gui
-
-TARGET = lib
 TEMPLATE = lib
+
+TARGET = cm
 
 CONFIG += c++14
 
@@ -40,3 +40,15 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+!build_pass:message(lib project dir: $${PWD} )
+
+include(../qmake-target-platform.pri)
+include(../qmake-destination-path.pri)
+
+DESTDIR     = $$PWD/../binaries/$$DESTINATION_PATH
+OBJECTS_DIR = $$PWD/../build/$$DESTINATION_PATH/.obj
+MOC_DIR     = $$PWD/../build/$$DESTINATION_PATH/.moc
+RCC_DIR     = $$PWD/../build/$$DESTINATION_PATH/.qrc
+UI_DIR      = $$PWD/../build/$$DESTINATION_PATH/.ui
+message(lib output dir: $${DESTDIR})
