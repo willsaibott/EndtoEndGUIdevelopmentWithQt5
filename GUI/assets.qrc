@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/assets">
+        <file alias="style">assets/style.qml</file>
+        <file alias="qmldir">assets/qmldir</file>
+        <file alias="fontawesome.otf">assets/fonts/fontawesome-desktop/otfs/font-solid.otf</file>
+    </qresource>
+</RCC>

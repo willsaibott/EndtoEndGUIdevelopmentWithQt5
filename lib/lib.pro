@@ -27,10 +27,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         source/controllers/master_controller.cpp \
+        source/controllers/navigation_controller.cpp \
         source/models/client.cpp
 
 HEADERS += \
         source/controllers/master_controller.h \
+        source/controllers/navigation_controller.h \
         source/models/client.h \
         source/lib_global.h
 
@@ -51,4 +53,4 @@ OBJECTS_DIR = $$PWD/../build/$$DESTINATION_PATH/.obj
 MOC_DIR     = $$PWD/../build/$$DESTINATION_PATH/.moc
 RCC_DIR     = $$PWD/../build/$$DESTINATION_PATH/.qrc
 UI_DIR      = $$PWD/../build/$$DESTINATION_PATH/.ui
-message(lib output dir: $${DESTDIR})
+!build_pass:message(lib output dir: $${DESTDIR})

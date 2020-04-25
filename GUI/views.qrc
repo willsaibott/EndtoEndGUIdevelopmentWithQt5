@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/views">
-        <file alias="master_view.qml">views/master_view.qml</file>
+        <file alias="master_view">views/master_view.qml</file>
+        <file alias="splash_view">views/splash_view.qml</file>
+        <file alias="dashboard">views/dashboard.qml</file>
+        <file alias="new_client">views/new_client.qml</file>
+        <file alias="edit_client">views/edit_client.qml</file>
+        <file alias="search_client">views/search_client.qml</file>
+        <file alias="anchor_demo">views/anchor_demo.qml</file>
+        <file alias="sizing_demo">views/sizing_demo.qml</file>
     </qresource>
 </RCC>
