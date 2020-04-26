@@ -2,11 +2,11 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <controllers/master_controller.h>
+#include <controllers/command_controller.h>
 
 int main(int argc, char *argv[]) {
   const QUrl url(QStringLiteral("qrc:/views/master_view"));
-  using MasterController     = cm::controllers::MasterController;
-  using NavigationController = cm::controllers::NavigationController;
+  using namespace cm::controllers;
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
   MasterController master_controller;
   QGuiApplication app(argc, argv);
@@ -14,6 +14,8 @@ int main(int argc, char *argv[]) {
 
   qmlRegisterType<MasterController>("CM", 1, 0, "MasterController");
   qmlRegisterType<NavigationController>("CM", 1, 0, "NavigationController");
+  qmlRegisterType<CommandController>("CM", 1, 0, "CommandController");
+  qmlRegisterType<cm::framework::Command>("CM", 1, 0, "Command");
 
   QQmlApplicationEngine engine;
   engine.addImportPath("qrc:/");

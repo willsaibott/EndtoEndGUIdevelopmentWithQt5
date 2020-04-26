@@ -19,6 +19,16 @@ Item {
     readonly property int   navbar_text_pixel_size:    22
 
 
+    readonly property real  width_command_btn:  80
+    readonly property real  height_command_btn: width_command_btn
+
+    readonly property color colour_command_bar_background:    "#cecece"
+    readonly property color colour_command_bar_font:          "#131313"
+    readonly property color colour_command_bar_font_disabled: "#636363"
+    readonly property real  height_command_bar:               height_command_btn
+    readonly property int   pixel_size_command_bar_icon:      32
+    readonly property int   pixel_size_command_bar_text:      12
+
     FontLoader {
         id:     font_awesome_loader
         source: "qrc:/assets/fontawesome.otf"
