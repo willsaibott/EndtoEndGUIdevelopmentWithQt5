@@ -64,9 +64,6 @@ update(const QJsonObject &object) {
   if (object.contains(key())) {
     set_value(object[key()].toString());
   }
-  else {
-    set_value("");
-  }
 }
 
 }

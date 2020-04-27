@@ -27,6 +27,8 @@ class CMLIBSHARED_EXPORT Client : public data::Entity
   Q_PROPERTY( QQmlListProperty<Contact>     ui_contacts        READ   contacts     NOTIFY contactsChanged)
 
 public:
+
+  friend class ClientTests;
   explicit Client(QObject *parent = nullptr);
   Client(QObject* parent, const QJsonObject& json);
 

@@ -3,7 +3,7 @@
 # Project created by QtCreator 2020-04-23T14:53:14
 #
 #-------------------------------------------------
-
+QT       += sql
 QT       -= gui
 TEMPLATE = lib
 
@@ -27,6 +27,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         source/controllers/command_controller.cpp \
+        source/controllers/idatabase_controller.cpp \
         source/controllers/master_controller.cpp \
         source/controllers/navigation_controller.cpp \
         source/data/data_decorator.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
 
 HEADERS += \
         source/controllers/command_controller.h \
+        source/controllers/idatabase_controller.h \
         source/controllers/master_controller.h \
         source/controllers/navigation_controller.h \
         source/data/data_decorator.h \

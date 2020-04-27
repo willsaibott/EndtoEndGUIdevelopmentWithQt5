@@ -47,51 +47,47 @@ key() const {
 void Entity::
 update(const QJsonObject &object) {
 
-  if (object.contains("decorator")) {
-    const auto& decorator { object.value("decorator").toObject() };
-    for (const auto& entry : implementation->_data_decorators) {
-      entry->update(decorator);
+  for (const auto& entry : implementation->_data_decorators) {
+    entry->update(object);
+  }
+
+  for (const auto& key : implementation->_child_entities.keys()) {
+    if (object.contains(key)) {
+      implementation->_child_entities.value(key)
+                    ->update(object.value(key).toObject());
     }
   }
 
-  if (object.contains("entity")) {
-    const auto& entity { object.value("entity").toObject() };
-    for (const auto& entry : implementation->_child_entities) {
-      entry->update(entity);
-    }
-  }
-
-  if (object.contains("collections")) {
-    const auto& array { object.value("entity").toArray() };
-    for (const auto& entry : implementation->_child_collections) {
-      entry->update(array);
+  for (const auto& key : implementation->_child_collections.keys()) {
+    if (object.contains(key)) {
+      implementation->_child_collections.value(key)
+                    ->update(object.value(key).toArray());
     }
   }
 }
 
 QJsonObject Entity::
 to_json() const {
-  QJsonObject output, entities, decorators, collections;
+  QJsonObject output;
 
-  for (const auto& entry : implementation->_data_decorators) {
-    decorators.insert(entry->key(), entry->to_json());
+  for (const auto& key : implementation->_data_decorators.keys()) {
+    const auto& entry { implementation->_data_decorators.value(key) };
+    output.insert(key, entry->to_json());
   }
 
-  for (const auto& entry : implementation->_child_entities) {
-    entities.insert(entry->key(), entry->to_json());
+  for (const auto& key : implementation->_child_entities.keys()) {
+    const auto& entry { implementation->_child_entities.value(key) };
+    output.insert(key, entry->to_json());
   }
 
-  for (const auto& entry : implementation->_child_collections) {
+  for (const auto& key : implementation->_child_collections.keys()) {
+    const auto& entry { implementation->_child_collections.value(key) };
     QJsonArray array;
     for (const auto& entity: entry->base_entities()) {
       array.append(entity->to_json());
     }
-    collections.insert(entry->key(), array);
+    output.insert(key, array);
   }
-
-  output.insert("decorator",   decorators);
-  output.insert("entity",      entities);
-  output.insert("collections", collections);
   return output;
 }
 

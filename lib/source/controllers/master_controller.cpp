@@ -9,7 +9,7 @@ public:
   NavigationController* _navigation_controller{ nullptr };
   CommandController*    _command_controller{ nullptr };
   models::Client*       _client{ nullptr };
-  QString               _welcome_message{ "This is MasterController to Major Tom" };
+  QString               _welcome_message{ "Welcome to the Client Management system!" };
 
   Implementation(MasterController* master_controller)
     : _master_controller{ master_controller }

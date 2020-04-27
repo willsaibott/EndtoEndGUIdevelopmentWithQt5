@@ -1,4 +1,6 @@
 #include "datetime_decorator.h"
+#include <QVariant>
+#include <QLocale>
 
 namespace cm {
 namespace data {
@@ -48,6 +50,7 @@ set_value(const QDateTime &new_value) {
 
 QString DateTimeDecorator::
 to_iso8601() const {
+  static QLocale locale{ QLocale::English };
   QString output;
   if (!implementation->_value.isNull()) {
     output = implementation->_value.toString(Qt::ISODate);
@@ -57,40 +60,44 @@ to_iso8601() const {
 
 QString DateTimeDecorator::
 to_pretty_date_string() const {
+  static QLocale locale{ QLocale::English };
   QString output { "null" };
   if (!implementation->_value.isNull()) {
-    output = implementation->_value.toString("d MMM yyyy");
+    output = locale.toString(implementation->_value, "d MMM yyyy");
   }
   return output;
 }
 
 QString DateTimeDecorator::
 to_pretty_time_string() const {
+  static QLocale locale{ QLocale::English };
   QString output { "null" };
   if (!implementation->_value.isNull()) {
-    output = implementation->_value.toString("hh::mm ap");
+    output = locale.toString(implementation->_value, "hh:mm ap");
   }
   return output;
 }
 
 QString DateTimeDecorator::
 to_pretty_string() const {
+  static QLocale locale{ QLocale::English };
   QString output { "null" };
   if (!implementation->_value.isNull()) {
-    output = implementation->_value.toString("ddd d MMM yyyy @ HH:mm::ss");
+    output = locale.toString(implementation->_value, "ddd d MMM yyyy @ HH:mm:ss");
   }
   return output;
 }
 
 QJsonValue DateTimeDecorator::
 to_json() const {
-  return QJsonValue{ implementation->_value.toString() };
+  static QLocale locale{ QLocale::English };
+  return QJsonValue{ implementation->_value.toString(Qt::ISODate) };
 }
 
 void DateTimeDecorator::
 update(const QJsonObject &object) {
   if (object.contains(key())) {
-    set_value(QDateTime::fromString(object[key()].toString()));
+    set_value(QDateTime::fromString(object[key()].toString(), Qt::ISODate));
   }
 }
 

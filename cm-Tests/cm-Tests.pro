@@ -6,10 +6,27 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES +=  \
-  source/models/client_tests.cpp
+HEADERS += \
+  source/models/client_tests.h \
+  source/controllers/master_controller_tests.h \
+  source/data/datetime_decorator_tests.h \
+  source/data/enumerator_decorator_tests.h \
+  source/data/integer_decorator_tests.h \
+  source/data/string_decorator_tests.h \
+  source/test_suite.h
 
-INCLUDEPATH += source
+SOURCES +=  \
+  source/controllers/master_controller_tests.cpp \
+  source/data/datetime_decorator_tests.cpp \
+  source/data/enumerator_decorator_tests.cpp \
+  source/data/integer_decorator_tests.cpp \
+  source/data/string_decorator_tests.cpp \
+  source/main.cpp \
+  source/models/client_tests.cpp \
+  source/test_suite.cpp
+
+INCLUDEPATH += source \
+               ../lib/source
 
 include(../qmake-target-platform.pri)
 include(../qmake-destination-path.pri)
@@ -25,3 +42,4 @@ UI_DIR      = $$PWD/../build/$$DESTINATION_PATH/.ui
 !build_pass:message(test output dir: $${DESTDIR})
 
 LIBS += -L$$DESTDIR -lcm
+
