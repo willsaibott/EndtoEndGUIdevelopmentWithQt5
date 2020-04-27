@@ -15,6 +15,7 @@ namespace data {
 class CMLIBSHARED_EXPORT StringDecorator : public DataDecorator
 {
   Q_OBJECT
+
   Q_PROPERTY( QString ui_value READ value WRITE set_value NOTIFY valueChanged)
 
 public:
@@ -26,6 +27,8 @@ public:
 
   StringDecorator& set_value(const QString& value);
   const QString& value() const;
+  const QString& label() const;
+  operator QString() const;
   virtual QJsonValue to_json() const override;
   virtual void update(const QJsonObject& object) override;
 

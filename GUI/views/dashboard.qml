@@ -1,12 +1,13 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import assets 1.0
 
 Item {
     Rectangle {
         anchors {
             fill: parent
         }
-        color:  "grey"
+        color:  Style.colour_background
         Text {
             id:   dashboard_default_text
             text: qsTr("Dashboard")

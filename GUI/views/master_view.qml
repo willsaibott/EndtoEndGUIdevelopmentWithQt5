@@ -7,8 +7,8 @@ import components 1.0
 Window {
     id:      master_window
     visible: true
-    width:   640
-    height:  480
+    width:   1280
+    height:  720
     title:   qsTr("Client Management")
 
     Connections {
@@ -19,24 +19,25 @@ Window {
         onShowSearchView:    content_frame.replace("qrc:/views/search_client")
     }
 
+
     StackView {
         id:           content_frame
         initialItem:  Qt.resolvedUrl("qrc:/views/splash_view")
         anchors {
-            fill: parent
+            top:    parent.top
+            bottom: parent.bottom
+            right:  parent.right
+            left:   parent.left
         }
         Timer {
             interval: 2000
             running:  true
             repeat:   false
             onTriggered: {
-                console.log(Date().toString())
-                content_frame.replace("qrc:/views/dashboard")
-                content_frame.anchors.top    = master_window.top;
-                content_frame.anchors.bottom = master_window.bottom;
-                content_frame.anchors.right  = master_window.right;
-                content_frame.anchors.left   = navigation_bar.right;
-                navigation_bar.visible       = true
+                console.log(Date().toString());
+                content_frame.replace("qrc:/views/dashboard");
+                navigation_bar.visible     = true;
+                content_frame.anchors.left = navigation_bar.right
             }
         }
 //        Component.onCompleted: {

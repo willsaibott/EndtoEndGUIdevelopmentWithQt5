@@ -1,9 +1,11 @@
-#include "data_decorator.h"
+#include <data/data_decorator.h>
+#include <data/entity.h>
 
 namespace cm {
 namespace data {
 
-class Entity : public QObject {} ;
+//class Entity : public QObject {} ;
+
 class DataDecorator::Implementation {
 public:
   Implementation(Entity* parent, const QString& key, const QString& label)

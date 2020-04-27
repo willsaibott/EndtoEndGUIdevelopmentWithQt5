@@ -44,6 +44,16 @@ value() const {
   return implementation->_value;
 }
 
+const QString &StringDecorator::
+label() const {
+  return  DataDecorator::label();
+}
+
+StringDecorator::operator
+QString() const {
+  return value();
+}
+
 QJsonValue StringDecorator::
 to_json() const {
   return QJsonValue::fromVariant(QVariant{ implementation->_value });

@@ -31,9 +31,15 @@ SOURCES += \
         source/controllers/navigation_controller.cpp \
         source/data/data_decorator.cpp \
         source/data/datetime_decorator.cpp \
+        source/data/entity.cpp \
+        source/data/enumerator_decorator.cpp \
+        source/data/integer_decorator.cpp \
         source/data/string_decorator.cpp \
         source/framework/command.cpp \
-        source/models/client.cpp
+        source/models/address.cpp \
+        source/models/appointment.cpp \
+        source/models/client.cpp \
+        source/models/contact.cpp
 
 HEADERS += \
         source/controllers/command_controller.h \
@@ -41,10 +47,17 @@ HEADERS += \
         source/controllers/navigation_controller.h \
         source/data/data_decorator.h \
         source/data/datetime_decorator.h \
+        source/data/entity.h \
+        source/data/entity_collection.h \
+        source/data/enumerator_decorator.h \
+        source/data/integer_decorator.h \
         source/data/string_decorator.h \
+        source/models/address.h \
+        source/models/appointment.h \
         source/models/client.h \
         source/framework/command.h \
-        source/lib_global.h
+        source/lib_global.h \
+        source/models/contact.h
 
 INCLUDEPATH += source
 

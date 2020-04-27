@@ -4,6 +4,7 @@ import QtQuick 2.12
 Item {
     property alias fontAwesome: font_awesome_loader.name
 
+    readonly property color colour_background:         "#efefef"
     readonly property color colour_navbar_background:  "#000000"
     readonly property color colour_navbar_foreground:  "#A0A0FF"
     readonly property color colour_navbar_on_hover:    "#444444"
@@ -28,6 +29,13 @@ Item {
     readonly property real  height_command_bar:               height_command_btn
     readonly property int   pixel_size_command_bar_icon:      32
     readonly property int   pixel_size_command_bar_text:      12
+
+    readonly property real  size_screen_margin:              20
+    readonly property color colour_data_controls_background: "#ffffff"
+    readonly property color colour_data_controls_font:       "#131313"
+    readonly property int   pixel_size_data_controls:        18
+    readonly property real  width_data_controls:             400
+    readonly property real  height_data_controls:            40
 
     FontLoader {
         id:     font_awesome_loader

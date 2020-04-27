@@ -5,5 +5,6 @@
         <file alias="navigation_bar">components/navigation_bar.qml</file>
         <file alias="command_bar">components/command_bar.qml</file>
         <file alias="command_button">components/command_button.qml</file>
+        <file alias= "string_editor_single_line">components/string_editor_single_line.qml</file>
     </qresource>
 </RCC>

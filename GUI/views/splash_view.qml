@@ -6,7 +6,7 @@ Item {
         anchors {
             fill: parent
         }
-        color:  "#f4c842"
+        color:  Style.colour_background
         Text {
             id:   splash_welcome_text
             text: qsTr("Welcome to Client Manager")

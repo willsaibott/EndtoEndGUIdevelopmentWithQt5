@@ -1,5 +1,6 @@
 module components
-NavigationButton 1.0 navigation_button
-NavigationBar    1.0 navigation_bar
-CommandButton    1.0 command_button
-CommandBar       1.0 command_bar
+NavigationButton       1.0 navigation_button
+NavigationBar          1.0 navigation_bar
+CommandButton          1.0 command_button
+CommandBar             1.0 command_bar
+StringEditorSingleLine 1.0 string_editor_single_line
