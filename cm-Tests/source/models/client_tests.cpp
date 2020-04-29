@@ -141,6 +141,30 @@ update_givenEmptyJsonObject_updatesPropertiesToDefaults() {
 }
 
 void ClientTests::
+id_givenPrimaryKeyWithNoValue_returnsUuid() {
+  Client testClient(this);
+  auto id = testClient.id();
+  // Using individual character checks
+  QCOMPARE(testClient.id().left(1), QString("{"));
+  QCOMPARE(testClient.id().mid(9, 1), QString("-"));
+  QCOMPARE(testClient.id().mid(14, 1), QString("-"));
+  QCOMPARE(testClient.id().mid(19, 1), QString("-"));
+  QCOMPARE(testClient.id().mid(24, 1), QString("-"));
+  QCOMPARE(testClient.id().right(1), QString("}"));
+  // Using regular expression pattern matching
+  QVERIFY(QRegularExpression("\\{.{8}-(.{4})-(.{4})-(.{4})-(.{12})\\}")
+             .match(testClient.id())
+             .hasMatch());
+}
+
+void ClientTests::
+id_givenPrimaryKeyWithValue_returnsPrimaryKey() {
+  Client testClient(this, QJsonDocument::fromJson(jsonByteArray).object());
+  QCOMPARE(testClient.reference->value(), QString("CM0001"));
+  QCOMPARE(testClient.id(), testClient.reference->value());
+}
+
+void ClientTests::
 verifyBillingAddress(const QJsonObject& jsonObject) {
   QVERIFY(jsonObject.contains(Client::BILLING_ADDRESS));
   QJsonObject billing_addr = jsonObject.value(Client::BILLING_ADDRESS).toObject();

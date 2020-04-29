@@ -1,15 +1,42 @@
 #pragma once
 
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QList>
 #include <QObject>
+#include <QString>
 
-class IDatabaseController : public QObject
+#include <lib_global.h>
+
+namespace cm {
+namespace controllers {
+
+class CMLIBSHARED_EXPORT IDatabaseController : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
+
 public:
-  explicit IDatabaseController(QObject *parent = nullptr);
+    IDatabaseController(QObject* parent) : QObject(parent) {}
+    virtual ~IDatabaseController(){}
 
-signals:
+    virtual bool
+    createRow(const QString& tableName,
+              const QString& id,
+              const QJsonObject& jsonObject) const = 0;
 
-public slots:
+    virtual bool
+    deleteRow(const QString& tableName, const QString& id) const = 0;
+
+    virtual QJsonArray
+    find(const QString& tableName, const QString& searchText) const = 0;
+
+    virtual QJsonObject
+    readRow(const QString& tableName, const QString& id) const = 0;
+
+    virtual bool
+    updateRow(const QString& tableName,
+              const QString& id,
+              const QJsonObject& jsonObject) const = 0;
 };
 
+}}

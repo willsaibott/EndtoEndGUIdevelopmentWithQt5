@@ -13,7 +13,10 @@
 #include <models/appointment.h>
 #include <models/client.h>
 #include <models/contact.h>
-
+#include <models/client_search.h>
+#include <rss/rss_item.h>
+#include <rss/rss_channel.h>
+#include <rss/rss_image.h>
 
 inline void
 register_qml_types() {
@@ -32,6 +35,11 @@ register_qml_types() {
   qmlRegisterType<cm::models::Appointment>("CM", 1, 0, "Appointment");
   qmlRegisterType<cm::models::Client>("CM", 1, 0, "Client");
   qmlRegisterType<cm::models::Contact>("CM", 1, 0, "Contact");
+  qmlRegisterType<cm::models::ClientSearch>("CM", 1, 0, "ClientSearch");
+
+  qmlRegisterType<cm::rss::RssChannel>("CM", 1, 0, "RssChannel");
+  qmlRegisterType<cm::rss::RssImage>  ("CM", 1, 0, "RssImage");
+  qmlRegisterType<cm::rss::RssItem>   ("CM", 1, 0, "RssItem");
 }
 
 

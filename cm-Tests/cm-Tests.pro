@@ -1,4 +1,4 @@
-QT += testlib
+QT += testlib network xml
 QT -= gui
 
 CONFIG += qt console warn_on depend_includepath testcase c++14
@@ -35,10 +35,10 @@ DISTFILES += \
   ../qmake-destination-path.pri
 
 DESTDIR     = $$PWD/../binaries/$$DESTINATION_PATH
-OBJECTS_DIR = $$PWD/../build/$$DESTINATION_PATH/.obj
-MOC_DIR     = $$PWD/../build/$$DESTINATION_PATH/.moc
-RCC_DIR     = $$PWD/../build/$$DESTINATION_PATH/.qrc
-UI_DIR      = $$PWD/../build/$$DESTINATION_PATH/.ui
+OBJECTS_DIR = $$PWD/build/$$DESTINATION_PATH/.obj
+MOC_DIR     = $$PWD/build/$$DESTINATION_PATH/.moc
+RCC_DIR     = $$PWD/build/$$DESTINATION_PATH/.qrc
+UI_DIR      = $$PWD/build/$$DESTINATION_PATH/.ui
 !build_pass:message(test output dir: $${DESTDIR})
 
 LIBS += -L$$DESTDIR -lcm

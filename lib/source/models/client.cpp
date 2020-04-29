@@ -38,6 +38,8 @@ Client(QObject *parent) : Entity{ parent, NAME } {
                     add_child_collection(
                       new EntityCollection<Contact>(this, CONTACTS)
                     ));
+
+  set_primary_key(reference);
 }
 
 Client::

@@ -1,6 +1,7 @@
 #include "entity.h"
 
 #include <QJsonArray>
+#include <QUuid>
 
 namespace cm {
 namespace data {
@@ -8,13 +9,14 @@ namespace data {
 class Entity::Implementation {
 public:
   Implementation(Entity* entity, const QString& key)
-    : _entity{ entity }, _key{ key }
+    : _entity{ entity }, _key{ key }, _uuid{ QUuid::createUuid() }
   {
-
   }
 
   Entity*                              _entity{ nullptr };
   QString                              _key;
+  QUuid                                _uuid;
+  StringDecorator*                     _primary_key{ nullptr };
   QMap<QString, Entity*>               _child_entities;
   QMap<QString, DataDecorator*>        _data_decorators;
   QMap<QString, EntityCollectionBase*> _child_collections;
@@ -47,6 +49,10 @@ key() const {
 void Entity::
 update(const QJsonObject &object) {
 
+  if (object.contains("id")) {
+    implementation->_uuid = QUuid{ object.value("id").toString() };
+  }
+
   for (const auto& entry : implementation->_data_decorators) {
     entry->update(object);
   }
@@ -69,6 +75,7 @@ update(const QJsonObject &object) {
 QJsonObject Entity::
 to_json() const {
   QJsonObject output;
+  output["id"] = implementation->_uuid.toString();
 
   for (const auto& key : implementation->_data_decorators.keys()) {
     const auto& entry { implementation->_data_decorators.value(key) };
@@ -88,6 +95,7 @@ to_json() const {
     }
     output.insert(key, array);
   }
+
   return output;
 }
 
@@ -120,6 +128,18 @@ add_child_collection(EntityCollectionBase *collection) {
     emit childCollectionsChanged(key);
   }
   return collection;
+}
+
+const QString Entity::
+id() const {
+  return implementation->_primary_key && !implementation->_primary_key->value().isEmpty() ?
+         implementation->_primary_key->value() :
+         implementation->_uuid.toString();
+}
+
+void Entity::
+set_primary_key(StringDecorator *primary_key) {
+  implementation->_primary_key = primary_key;
 }
 
 }

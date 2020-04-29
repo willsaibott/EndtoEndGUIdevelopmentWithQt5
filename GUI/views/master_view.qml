@@ -1,8 +1,8 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
-import assets 1.0
-import components 1.0
+import "../assets"
+import "../components"
 
 Window {
     id:      master_window
@@ -15,8 +15,9 @@ Window {
         target:              master_controller.ui_navigation_ctrl
         onShowNewClientView: content_frame.replace("qrc:/views/new_client")
         onShowDashboardView: content_frame.replace("qrc:/views/dashboard")
-        onShowEditView:      content_frame.replace("qrc:/views/edit_client", { selected_client: client })
+        onShowEditView:      content_frame.replace("qrc:/views/edit_client", { client: client })
         onShowSearchView:    content_frame.replace("qrc:/views/search_client")
+        onShowRssView:       content_frame.replace("qrc:/views/rss_view")
     }
 
 

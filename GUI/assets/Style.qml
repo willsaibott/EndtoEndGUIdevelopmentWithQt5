@@ -37,6 +37,25 @@ Item {
     readonly property real  width_data_controls:             400
     readonly property real  height_data_controls:            40
 
+    readonly property real  size_control_spacing:            10
+    readonly property color colour_panel_background:         "#ffffff"
+    readonly property color colour_panel_background_hover:   "#ececec"
+    readonly property color colour_panel_header_background:  "#131313"
+    readonly property color colour_panel_header_font:        "#ffffff"
+    readonly property color colour_panel_font:               "#131313"
+    readonly property color colour_shadow:                   "#dedede"
+    readonly property int   pixel_size_panel_header:         18
+    readonly property real  height_panel_header:             40
+    readonly property real  size_shadow_offset:              5
+
+    readonly property color colour_item_background:          "#fefefe"
+    readonly property color colour_item_background_hover:    "#efefef"
+    readonly property color colour_item_border:              "#efefef"
+    readonly property color colour_item_date_font:           "#636363"
+    readonly property color colour_item_title_font:          "#131313"
+    readonly property real  size_item_margin:                5
+    readonly property real  size_header_margin:              5
+
     FontLoader {
         id:     font_awesome_loader
         source: "qrc:/assets/fontawesome.otf"

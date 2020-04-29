@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import assets 1.0
+import "../assets"
 
 Item {
     property bool is_collapsed: true
@@ -47,6 +47,13 @@ Item {
                 hover_color:    Style.colour_navbar_on_hover
                 onNavigationButtonClicked:
                     master_controller.ui_navigation_ctrl.showSearchView()
+            }
+            NavigationButton {
+                icon_character: "\uf09e"
+                description:    qsTr("Rss Feed")
+                hover_color:    Style.colour_navbar_on_hover
+                onNavigationButtonClicked:
+                    master_controller.ui_navigation_ctrl.showRssView()
             }
         }
     }

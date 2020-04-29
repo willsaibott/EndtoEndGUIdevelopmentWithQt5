@@ -4,3 +4,7 @@ NavigationBar          1.0 navigation_bar
 CommandButton          1.0 command_button
 CommandBar             1.0 command_bar
 StringEditorSingleLine 1.0 string_editor_single_line
+Panel                  1.0 panel
+AddressEditor          1.0 address_editor
+SearchResultDelegate   1.0 search_result_delegate
+RssItemDelegate        1.0 rss_item_delegate

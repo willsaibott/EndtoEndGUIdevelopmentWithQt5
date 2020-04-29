@@ -16,8 +16,9 @@ namespace controllers {
   signals:
     void showNewClientView();
     void showDashboardView();
-    void showEditView(cm::models::Client& client);
+    void showEditView(cm::models::Client* client);
     void showSearchView();
+    void showRssView();
 
   public slots:
   };

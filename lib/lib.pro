@@ -3,7 +3,7 @@
 # Project created by QtCreator 2020-04-23T14:53:14
 #
 #-------------------------------------------------
-QT       += sql
+QT       += sql network xml
 QT       -= gui
 TEMPLATE = lib
 
@@ -27,9 +27,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         source/controllers/command_controller.cpp \
-        source/controllers/idatabase_controller.cpp \
+        source/controllers/database_controller.cpp \
         source/controllers/master_controller.cpp \
         source/controllers/navigation_controller.cpp \
+        source/network/network_access_manager.cpp \
         source/data/data_decorator.cpp \
         source/data/datetime_decorator.cpp \
         source/data/entity.cpp \
@@ -40,13 +41,23 @@ SOURCES += \
         source/models/address.cpp \
         source/models/appointment.cpp \
         source/models/client.cpp \
-        source/models/contact.cpp
+        source/models/client_search.cpp \
+        source/models/contact.cpp \
+        source/network/web_request.cpp \
+        source/rss/rss_channel.cpp \
+        source/rss/rss_image.cpp \
+        source/rss/rss_item.cpp \
+        source/utilities/xml_helper.cpp
 
 HEADERS += \
         source/controllers/command_controller.h \
+        source/controllers/database_controller.h \
         source/controllers/idatabase_controller.h \
         source/controllers/master_controller.h \
         source/controllers/navigation_controller.h \
+        source/network/inetwork_access.h \
+        source/network/iweb_request.h \
+        source/network/network_access_manager.h \
         source/data/data_decorator.h \
         source/data/datetime_decorator.h \
         source/data/entity.h \
@@ -59,7 +70,13 @@ HEADERS += \
         source/models/client.h \
         source/framework/command.h \
         source/lib_global.h \
-        source/models/contact.h
+        source/models/client_search.h \
+        source/models/contact.h \
+        source/network/web_request.h \
+        source/rss/rss_channel.h \
+        source/rss/rss_image.h \
+        source/rss/rss_item.h \
+        source/utilities/xml_helper.h
 
 INCLUDEPATH += source
 
@@ -74,8 +91,8 @@ include(../qmake-target-platform.pri)
 include(../qmake-destination-path.pri)
 
 DESTDIR     = $$PWD/../binaries/$$DESTINATION_PATH
-OBJECTS_DIR = $$PWD/../build/$$DESTINATION_PATH/.obj
-MOC_DIR     = $$PWD/../build/$$DESTINATION_PATH/.moc
-RCC_DIR     = $$PWD/../build/$$DESTINATION_PATH/.qrc
-UI_DIR      = $$PWD/../build/$$DESTINATION_PATH/.ui
+OBJECTS_DIR = $$PWD/build/$$DESTINATION_PATH/.obj
+MOC_DIR     = $$PWD/build/$$DESTINATION_PATH/.moc
+RCC_DIR     = $$PWD/build/$$DESTINATION_PATH/.qrc
+UI_DIR      = $$PWD/build/$$DESTINATION_PATH/.ui
 !build_pass:message(lib output dir: $${DESTDIR})

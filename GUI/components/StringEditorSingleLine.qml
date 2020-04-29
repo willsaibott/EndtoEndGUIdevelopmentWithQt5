@@ -1,6 +1,6 @@
 import QtQuick 2.12
 import CM 1.0
-import assets 1.0
+import "../assets"
 
 Item {
     property StringDecorator string_decorator
@@ -15,7 +15,7 @@ Item {
         Rectangle {
             width:        Style.width_data_controls
             height:       Style.height_data_controls
-            color:        Style.colour_data_controls_background
+            color:        Style.colour_panel_background
 
             Text {
                 id: text_label
